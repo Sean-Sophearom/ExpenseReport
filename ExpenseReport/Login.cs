@@ -1,27 +1,26 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ExpenseReport
 {
     public partial class Login : Form
     {
+        private const string userId = "admin";
+        private const string password = "admin";
+
         public Login()
         {
             InitializeComponent();
 
-            label1.Left = (this.ClientSize.Width - label1.Width) / 2;
-            label2.Left = (this.ClientSize.Width - label2.Width) / 2;
-            guna2TextBox1.Left = (this.ClientSize.Width - guna2TextBox1.Width) / 2;
-            guna2TextBox2.Left = (this.ClientSize.Width - guna2TextBox2.Width) / 2;
-            guna2Button1.Left = (this.ClientSize.Width - guna2Button1.Width) / 2;
+            // Listen for enter key on password field
+            guna2TextBox2.KeyDown += (sndr, ev) =>
+            {
+                if (ev.KeyCode == Keys.Enter)
+                {
+                    guna2Button1.PerformClick();
+                }
+            };
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -34,8 +33,14 @@ namespace ExpenseReport
             var userId = guna2TextBox1.Text;
             var password = guna2TextBox2.Text;
 
-            Debug.WriteLine("User ID: " + userId);
-            Debug.WriteLine("Password: " + password);
+            if (userId == Login.userId && password == Login.password)
+            {
+                // @TODO: Open the main form
+            }
+            else
+            {
+                MessageBox.Show("Invalid credentials");
+            }
         }
     }
 }
