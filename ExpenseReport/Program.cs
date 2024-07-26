@@ -8,12 +8,14 @@ namespace ExpenseReport
 {
     internal static class Program
     {
+        public const bool isDevMode = true;
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
         static void Main()
         {
+            Database.Instance.CreateDatabase();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Login());
