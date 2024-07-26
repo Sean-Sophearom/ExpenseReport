@@ -60,7 +60,7 @@
             this.guna2ControlBox2.CustomIconSize = 8F;
             this.guna2ControlBox2.FillColor = System.Drawing.Color.Transparent;
             this.guna2ControlBox2.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.guna2ControlBox2.Location = new System.Drawing.Point(519, 3);
+            this.guna2ControlBox2.Location = new System.Drawing.Point(519, 5);
             this.guna2ControlBox2.Name = "guna2ControlBox2";
             this.guna2ControlBox2.Size = new System.Drawing.Size(24, 24);
             this.guna2ControlBox2.TabIndex = 2;
@@ -72,8 +72,9 @@
             this.guna2ControlBox1.CustomIconSize = 8F;
             this.guna2ControlBox1.FillColor = System.Drawing.Color.Transparent;
             this.guna2ControlBox1.IconColor = System.Drawing.Color.Black;
-            this.guna2ControlBox1.Location = new System.Drawing.Point(549, 3);
+            this.guna2ControlBox1.Location = new System.Drawing.Point(549, 5);
             this.guna2ControlBox1.Name = "guna2ControlBox1";
+            this.guna2ControlBox1.PressedColor = System.Drawing.Color.Empty;
             this.guna2ControlBox1.Size = new System.Drawing.Size(24, 24);
             this.guna2ControlBox1.TabIndex = 1;
             // 
@@ -109,7 +110,7 @@
             // guna2TextBox1
             // 
             this.guna2TextBox1.Animated = true;
-            this.guna2TextBox1.BorderRadius = 16;
+            this.guna2TextBox1.BorderRadius = 8;
             this.guna2TextBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.guna2TextBox1.DefaultText = "";
             this.guna2TextBox1.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -133,7 +134,7 @@
             // guna2TextBox2
             // 
             this.guna2TextBox2.Animated = true;
-            this.guna2TextBox2.BorderRadius = 16;
+            this.guna2TextBox2.BorderRadius = 8;
             this.guna2TextBox2.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.guna2TextBox2.DefaultText = "";
             this.guna2TextBox2.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -156,13 +157,15 @@
             // 
             // guna2Button1
             // 
-            this.guna2Button1.BorderRadius = 16;
+            this.guna2Button1.Animated = true;
+            this.guna2Button1.BorderRadius = 8;
             this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button1.Font = new System.Drawing.Font("Inter Medium", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2Button1.Font = new System.Drawing.Font("Inter Medium", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Button1.ForeColor = System.Drawing.Color.White;
+            this.guna2Button1.IndicateFocus = true;
             this.guna2Button1.Location = new System.Drawing.Point(128, 284);
             this.guna2Button1.Margin = new System.Windows.Forms.Padding(2);
             this.guna2Button1.Name = "guna2Button1";

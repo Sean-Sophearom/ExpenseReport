@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Runtime.Serialization;
 using System.Windows.Forms;
 
 namespace ExpenseReport
@@ -25,7 +26,7 @@ namespace ExpenseReport
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+        
         }
 
         private void guna2Button1_Click(object sender, EventArgs e)
@@ -33,9 +34,18 @@ namespace ExpenseReport
             var userId = guna2TextBox1.Text;
             var password = guna2TextBox2.Text;
 
-            if (userId == Login.userId && password == Login.password)
+            if (Program.isDevMode || (userId == Login.userId && password == Login.password))
             {
-                // @TODO: Open the main form
+                var mainForm = new MainForm();
+                mainForm.Location = this.Location;
+                mainForm.StartPosition = FormStartPosition.Manual;
+                this.Hide();
+                mainForm.ShowDialog();
+                this.Close();
+            }
+            else if (string.IsNullOrWhiteSpace(userId) || string.IsNullOrWhiteSpace(password))
+            {
+                MessageBox.Show("Please enter your credentials");
             }
             else
             {
