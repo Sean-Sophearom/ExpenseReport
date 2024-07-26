@@ -9,13 +9,15 @@ namespace ExpenseReport
     internal static class Program
     {
         public const bool isDevMode = true;
+        private static readonly Database db = Database.Instance;
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
         static void Main()
         {
-            Database.Instance.CreateDatabase();
+            db.CreateDatabaseAndTables();
+            db.PopulateDatabaseTables();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Login());
