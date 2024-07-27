@@ -55,7 +55,7 @@
             this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
             this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(850, 32);
+            this.guna2Panel1.Size = new System.Drawing.Size(950, 32);
             this.guna2Panel1.TabIndex = 1;
             // 
             // label1
@@ -76,7 +76,7 @@
             this.guna2ControlBox2.CustomIconSize = 8F;
             this.guna2ControlBox2.FillColor = System.Drawing.Color.Transparent;
             this.guna2ControlBox2.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.guna2ControlBox2.Location = new System.Drawing.Point(789, 5);
+            this.guna2ControlBox2.Location = new System.Drawing.Point(889, 5);
             this.guna2ControlBox2.Name = "guna2ControlBox2";
             this.guna2ControlBox2.Size = new System.Drawing.Size(24, 24);
             this.guna2ControlBox2.TabIndex = 2;
@@ -88,7 +88,7 @@
             this.guna2ControlBox1.CustomIconSize = 8F;
             this.guna2ControlBox1.FillColor = System.Drawing.Color.Transparent;
             this.guna2ControlBox1.IconColor = System.Drawing.Color.Black;
-            this.guna2ControlBox1.Location = new System.Drawing.Point(819, 5);
+            this.guna2ControlBox1.Location = new System.Drawing.Point(919, 5);
             this.guna2ControlBox1.Name = "guna2ControlBox1";
             this.guna2ControlBox1.PressedColor = System.Drawing.Color.Empty;
             this.guna2ControlBox1.Size = new System.Drawing.Size(24, 24);
@@ -181,7 +181,7 @@
             this.guna2Panel2.Location = new System.Drawing.Point(0, 32);
             this.guna2Panel2.Name = "guna2Panel2";
             this.guna2Panel2.Padding = new System.Windows.Forms.Padding(8);
-            this.guna2Panel2.Size = new System.Drawing.Size(850, 40);
+            this.guna2Panel2.Size = new System.Drawing.Size(950, 40);
             this.guna2Panel2.TabIndex = 2;
             // 
             // guna2Panel3
@@ -192,7 +192,7 @@
             this.guna2Panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.guna2Panel3.Location = new System.Drawing.Point(0, 72);
             this.guna2Panel3.Name = "guna2Panel3";
-            this.guna2Panel3.Size = new System.Drawing.Size(850, 428);
+            this.guna2Panel3.Size = new System.Drawing.Size(950, 428);
             this.guna2Panel3.TabIndex = 3;
             // 
             // MainForm
@@ -200,7 +200,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(850, 500);
+            this.ClientSize = new System.Drawing.Size(950, 500);
             this.Controls.Add(this.guna2Panel3);
             this.Controls.Add(this.guna2Panel2);
             this.Controls.Add(this.guna2Panel1);
