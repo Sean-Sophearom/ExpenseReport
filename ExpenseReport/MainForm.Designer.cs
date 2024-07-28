@@ -39,6 +39,7 @@
             this.guna2Button3 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2Panel3 = new Guna.UI2.WinForms.Guna2Panel();
+            this.guna2Button4 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Panel1.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
             this.SuspendLayout();
@@ -54,17 +55,19 @@
             this.guna2Panel1.CustomBorderThickness = new System.Windows.Forms.Padding(1, 1, 1, 0);
             this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
+            this.guna2Panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(950, 32);
+            this.guna2Panel1.Size = new System.Drawing.Size(1267, 39);
             this.guna2Panel1.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Inter", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Location = new System.Drawing.Point(16, 11);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(79, 15);
+            this.label1.Size = new System.Drawing.Size(99, 19);
             this.label1.TabIndex = 3;
             this.label1.Text = "FinanceFlow";
             // 
@@ -76,9 +79,10 @@
             this.guna2ControlBox2.CustomIconSize = 8F;
             this.guna2ControlBox2.FillColor = System.Drawing.Color.Transparent;
             this.guna2ControlBox2.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.guna2ControlBox2.Location = new System.Drawing.Point(889, 5);
+            this.guna2ControlBox2.Location = new System.Drawing.Point(1185, 6);
+            this.guna2ControlBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.guna2ControlBox2.Name = "guna2ControlBox2";
-            this.guna2ControlBox2.Size = new System.Drawing.Size(24, 24);
+            this.guna2ControlBox2.Size = new System.Drawing.Size(32, 30);
             this.guna2ControlBox2.TabIndex = 2;
             // 
             // guna2ControlBox1
@@ -88,10 +92,11 @@
             this.guna2ControlBox1.CustomIconSize = 8F;
             this.guna2ControlBox1.FillColor = System.Drawing.Color.Transparent;
             this.guna2ControlBox1.IconColor = System.Drawing.Color.Black;
-            this.guna2ControlBox1.Location = new System.Drawing.Point(919, 5);
+            this.guna2ControlBox1.Location = new System.Drawing.Point(1225, 6);
+            this.guna2ControlBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.guna2ControlBox1.Name = "guna2ControlBox1";
             this.guna2ControlBox1.PressedColor = System.Drawing.Color.Empty;
-            this.guna2ControlBox1.Size = new System.Drawing.Size(24, 24);
+            this.guna2ControlBox1.Size = new System.Drawing.Size(32, 30);
             this.guna2ControlBox1.TabIndex = 1;
             // 
             // guna2DragControl1
@@ -117,11 +122,12 @@
             this.guna2Button1.ForeColor = System.Drawing.Color.Black;
             this.guna2Button1.HoverState.FillColor = System.Drawing.Color.Transparent;
             this.guna2Button1.IndicateFocus = true;
-            this.guna2Button1.Location = new System.Drawing.Point(4, 2);
+            this.guna2Button1.Location = new System.Drawing.Point(5, 2);
+            this.guna2Button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.Size = new System.Drawing.Size(154, 36);
+            this.guna2Button1.Size = new System.Drawing.Size(205, 44);
             this.guna2Button1.TabIndex = 0;
-            this.guna2Button1.Text = "Employee";
+            this.guna2Button1.Text = "Report";
             this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click);
             // 
             // guna2Button2
@@ -140,11 +146,12 @@
             this.guna2Button2.ForeColor = System.Drawing.Color.Black;
             this.guna2Button2.HoverState.FillColor = System.Drawing.Color.Transparent;
             this.guna2Button2.IndicateFocus = true;
-            this.guna2Button2.Location = new System.Drawing.Point(162, 2);
+            this.guna2Button2.Location = new System.Drawing.Point(216, 2);
+            this.guna2Button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.guna2Button2.Name = "guna2Button2";
-            this.guna2Button2.Size = new System.Drawing.Size(154, 36);
+            this.guna2Button2.Size = new System.Drawing.Size(205, 44);
             this.guna2Button2.TabIndex = 1;
-            this.guna2Button2.Text = "Expense";
+            this.guna2Button2.Text = "Employee";
             this.guna2Button2.Click += new System.EventHandler(this.guna2Button2_Click);
             // 
             // guna2Button3
@@ -163,25 +170,28 @@
             this.guna2Button3.ForeColor = System.Drawing.Color.Black;
             this.guna2Button3.HoverState.FillColor = System.Drawing.Color.Transparent;
             this.guna2Button3.IndicateFocus = true;
-            this.guna2Button3.Location = new System.Drawing.Point(320, 2);
+            this.guna2Button3.Location = new System.Drawing.Point(427, 2);
+            this.guna2Button3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.guna2Button3.Name = "guna2Button3";
-            this.guna2Button3.Size = new System.Drawing.Size(154, 36);
+            this.guna2Button3.Size = new System.Drawing.Size(205, 44);
             this.guna2Button3.TabIndex = 2;
-            this.guna2Button3.Text = "Income";
+            this.guna2Button3.Text = "Expense";
             this.guna2Button3.Click += new System.EventHandler(this.guna2Button3_Click);
             // 
             // guna2Panel2
             // 
+            this.guna2Panel2.Controls.Add(this.guna2Button4);
             this.guna2Panel2.Controls.Add(this.guna2Button3);
             this.guna2Panel2.Controls.Add(this.guna2Button2);
             this.guna2Panel2.Controls.Add(this.guna2Button1);
             this.guna2Panel2.CustomBorderColor = System.Drawing.SystemColors.ActiveBorder;
             this.guna2Panel2.CustomBorderThickness = new System.Windows.Forms.Padding(1);
             this.guna2Panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.guna2Panel2.Location = new System.Drawing.Point(0, 32);
+            this.guna2Panel2.Location = new System.Drawing.Point(0, 39);
+            this.guna2Panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.guna2Panel2.Name = "guna2Panel2";
-            this.guna2Panel2.Padding = new System.Windows.Forms.Padding(8);
-            this.guna2Panel2.Size = new System.Drawing.Size(950, 40);
+            this.guna2Panel2.Padding = new System.Windows.Forms.Padding(11, 10, 11, 10);
+            this.guna2Panel2.Size = new System.Drawing.Size(1267, 49);
             this.guna2Panel2.TabIndex = 2;
             // 
             // guna2Panel3
@@ -190,21 +200,47 @@
             this.guna2Panel3.CustomBorderColor = System.Drawing.SystemColors.ActiveBorder;
             this.guna2Panel3.CustomBorderThickness = new System.Windows.Forms.Padding(1, 0, 1, 1);
             this.guna2Panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.guna2Panel3.Location = new System.Drawing.Point(0, 72);
+            this.guna2Panel3.Location = new System.Drawing.Point(0, 88);
+            this.guna2Panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.guna2Panel3.Name = "guna2Panel3";
-            this.guna2Panel3.Size = new System.Drawing.Size(950, 428);
+            this.guna2Panel3.Size = new System.Drawing.Size(1267, 527);
             this.guna2Panel3.TabIndex = 3;
+            // 
+            // guna2Button4
+            // 
+            this.guna2Button4.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
+            this.guna2Button4.CheckedState.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2Button4.CheckedState.FillColor = System.Drawing.Color.White;
+            this.guna2Button4.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.guna2Button4.CustomBorderThickness = new System.Windows.Forms.Padding(0, 0, 0, 3);
+            this.guna2Button4.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button4.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button4.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2Button4.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2Button4.FillColor = System.Drawing.Color.Transparent;
+            this.guna2Button4.Font = new System.Drawing.Font("Inter", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2Button4.ForeColor = System.Drawing.Color.Black;
+            this.guna2Button4.HoverState.FillColor = System.Drawing.Color.Transparent;
+            this.guna2Button4.IndicateFocus = true;
+            this.guna2Button4.Location = new System.Drawing.Point(640, 2);
+            this.guna2Button4.Margin = new System.Windows.Forms.Padding(4);
+            this.guna2Button4.Name = "guna2Button4";
+            this.guna2Button4.Size = new System.Drawing.Size(205, 44);
+            this.guna2Button4.TabIndex = 3;
+            this.guna2Button4.Text = "Income";
+            this.guna2Button4.Click += new System.EventHandler(this.guna2Button4_Click);
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(950, 500);
+            this.ClientSize = new System.Drawing.Size(1267, 615);
             this.Controls.Add(this.guna2Panel3);
             this.Controls.Add(this.guna2Panel2);
             this.Controls.Add(this.guna2Panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "MainForm";
             this.Text = "Form1";
             this.guna2Panel1.ResumeLayout(false);
@@ -226,5 +262,6 @@
         private Guna.UI2.WinForms.Guna2Button guna2Button3;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel2;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel3;
+        private Guna.UI2.WinForms.Guna2Button guna2Button4;
     }
 }

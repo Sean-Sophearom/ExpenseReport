@@ -16,20 +16,25 @@ namespace ExpenseReport
         public MainForm()
         {
             InitializeComponent();
-            AddUserControl(new UC_Employee());
+            AddUserControl(new UC_Report());
         }
 
         private void guna2Button1_Click(object sender, EventArgs e)
         {
-            AddUserControl(new UC_Employee());
+            AddUserControl(new UC_Report());
         }
 
         private void guna2Button2_Click(object sender, EventArgs e)
         {
-            AddUserControl(new UC_Expense());
+            AddUserControl(new UC_Employee());
         }
 
         private void guna2Button3_Click(object sender, EventArgs e)
+        {
+            AddUserControl(new UC_Expense());
+        }
+
+        private void guna2Button4_Click(object sender, EventArgs e)
         {
             AddUserControl(new UC_Income());
         }
