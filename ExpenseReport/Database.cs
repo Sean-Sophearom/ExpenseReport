@@ -55,6 +55,24 @@ namespace ExpenseReport
             }
         }
 
+        public List<KeyValuePair<string, double>> GetReport (string table, string reportType)
+        {
+            var report = new List<KeyValuePair<string, double>>();
+            using (SQLiteConnection conn = new SQLiteConnection(dbPath))
+            {
+                conn.Open();
+                string query = $"SELECT * FROM View{table}ReportBy{reportType}";
+                SQLiteCommand cmd = new SQLiteCommand(query, conn);
+                SQLiteDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    report.Add(new KeyValuePair<string, double>(reader.GetString(0), reader.GetDouble(1)));
+                }
+                conn.Close();
+            }
+            return report;
+        }
+
         public DataTable GetEmployees()
         {
             DataTable dt = new DataTable();
@@ -239,6 +257,10 @@ namespace ExpenseReport
                         DROP VIEW IF EXISTS ViewEmployeeList;   
                         DROP VIEW IF EXISTS ViewIncomeList;
                         DROP VIEW IF EXISTS ViewExpenseList;
+                        DROP VIEW IF EXISTS ViewExpenseReportByMonth;   
+                        DROP VIEW IF EXISTS ViewIncomeReportByMonth;
+                        DROP VIEW IF EXISTS ViewExpenseReportByType;
+                        DROP VIEW IF EXISTS ViewIncomeReportByType;
                     ";
                     SQLiteCommand dropCmd = new SQLiteCommand(dropQuery, conn);
                     dropCmd.ExecuteNonQuery();
@@ -341,6 +363,96 @@ namespace ExpenseReport
                         FROM TBExpense EXP
                         LEFT JOIN TBCurrency CUR ON EXP.CurrencyId = CUR.Id
                         LEFT JOIN TBEmployee EMP ON EXP.EmployeeId = EMP.Id;
+
+                    CREATE VIEW IF NOT EXISTS ViewExpenseReportByMonth AS
+                        WITH CTEExp AS (
+                            SELECT
+                                EXP.*,
+                                ROUND(EXP.Amount * CUR.Value / (SELECT Value FROM TBCurrency WHERE FullName = 'US Dollar')) AS USDAmount
+                            FROM TBExpense EXP
+                            LEFT JOIN TBCurrency CUR ON EXP.CurrencyId = CUR.Id
+                        )
+                        SELECT
+                            CASE
+                                WHEN strftime('%m', Date) = '01' THEN 'Jan'
+                                WHEN strftime('%m', Date) = '02' THEN 'Feb'
+                                WHEN strftime('%m', Date) = '03' THEN 'Mar'
+                                WHEN strftime('%m', Date) = '04' THEN 'Apr'
+                                WHEN strftime('%m', Date) = '05' THEN 'May'
+                                WHEN strftime('%m', Date) = '06' THEN 'Jun'
+                                WHEN strftime('%m', Date) = '07' THEN 'Jul'
+                                WHEN strftime('%m', Date) = '08' THEN 'Aug'
+                                WHEN strftime('%m', Date) = '09' THEN 'Sep'
+                                WHEN strftime('%m', Date) = '10' THEN 'Oct'
+                                WHEN strftime('%m', Date) = '11' THEN 'Nov'
+                                WHEN strftime('%m', Date) = '12' THEN 'Dec'
+                            END AS Month,
+                            SUM(USDAmount) AS Amount
+                        FROM CTEExp
+                        WHERE strftime('%Y', Date) = strftime('%Y', 'now')
+                        GROUP BY strftime('%m', Date)
+                        ORDER BY strftime('%m', Date);
+    
+                    CREATE VIEW iF NOT EXISTS ViewIncomeReportByMonth AS
+                        WITH CTEInc AS (
+                            SELECT
+                                INC.*,
+                                ROUND(INC.Amount * CUR.Value / (SELECT Value FROM TBCurrency WHERE FullName = 'US Dollar')) AS USDAmount
+                            FROM TBIncome INC
+                            LEFT JOIN TBCurrency CUR ON INC.CurrencyId = CUR.Id
+                        )
+                        SELECT
+                            CASE
+                                WHEN strftime('%m', Date) = '01' THEN 'Jan'
+                                WHEN strftime('%m', Date) = '02' THEN 'Feb'
+                                WHEN strftime('%m', Date) = '03' THEN 'Mar'
+                                WHEN strftime('%m', Date) = '04' THEN 'Apr'
+                                WHEN strftime('%m', Date) = '05' THEN 'May'
+                                WHEN strftime('%m', Date) = '06' THEN 'Jun'
+                                WHEN strftime('%m', Date) = '07' THEN 'Jul'
+                                WHEN strftime('%m', Date) = '08' THEN 'Aug'
+                                WHEN strftime('%m', Date) = '09' THEN 'Sep'
+                                WHEN strftime('%m', Date) = '10' THEN 'Oct'
+                                WHEN strftime('%m', Date) = '11' THEN 'Nov'
+                                WHEN strftime('%m', Date) = '12' THEN 'Dec'
+                            END AS Month,
+                            SUM(USDAmount) AS Amount
+                        FROM CTEInc
+                        WHERE strftime('%Y', Date) = strftime('%Y', 'now')
+                        GROUP BY strftime('%m', Date)
+                        ORDER BY strftime('%m', Date);
+
+    
+                    CREATE VIEW IF NOT EXISTS ViewExpenseReportByType AS
+                        WITH CTEExp AS (
+                            SELECT
+                                EXP.*,
+                                ROUND(EXP.Amount * CUR.Value / (SELECT Value FROM TBCurrency WHERE FullName = 'US Dollar')) AS USDAmount
+                            FROM TBExpense EXP
+                            LEFT JOIN TBCurrency CUR ON EXP.CurrencyId = CUR.Id
+                        )
+                        SELECT
+                            Type,
+                            SUM(USDAmount) AS Amount
+                        FROM CTEExp
+                        GROUP BY Type
+                        ORDER BY Amount DESC;
+
+
+                    CREATE VIEW IF NOT EXISTS ViewIncomeReportByType AS
+                        WITH CTEInc AS (
+                            SELECT
+                                INC.*,
+                                ROUND(INC.Amount * CUR.Value / (SELECT Value FROM TBCurrency WHERE FullName = 'US Dollar')) AS USDAmount
+                            FROM TBIncome INC
+                            LEFT JOIN TBCurrency CUR ON INC.CurrencyId = CUR.Id
+                        )
+                        SELECT
+                            Type,
+                            SUM(USDAmount) AS Amount
+                        FROM CTEInc
+                        GROUP BY Type
+                        ORDER BY Amount DESC;
                 ";
                 SQLiteCommand cmd = new SQLiteCommand(query, conn);
                 cmd.ExecuteNonQuery();
@@ -380,8 +492,8 @@ namespace ExpenseReport
                         ('Customer Support', 2);
 
                     INSERT INTO TBCurrency (FullName, Name, Value) VALUES 
-                        ('US Dollar', 'USD$', 1.0),
-                        ('Khmer Riel', 'KHR៛', 4100.0);
+                        ('US Dollar', 'USD$', 4100.0),
+                        ('Khmer Riel', 'KHR៛', 1.0);
 
                     INSERT INTO TBTransactionType (Name, Type) VALUES 
                         ('Software Sales', 'Income'),
