@@ -95,7 +95,6 @@
             // 
             this.CancelBtn.Animated = true;
             this.CancelBtn.BorderRadius = 4;
-            this.CancelBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.CancelBtn.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.CancelBtn.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.CancelBtn.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -117,7 +116,6 @@
             // 
             this.InsertBtn.Animated = true;
             this.InsertBtn.BorderRadius = 4;
-            this.InsertBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.InsertBtn.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.InsertBtn.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.InsertBtn.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -137,7 +135,6 @@
             // 
             this.UpdateBtn.Animated = true;
             this.UpdateBtn.BorderRadius = 4;
-            this.UpdateBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.UpdateBtn.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.UpdateBtn.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.UpdateBtn.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -167,7 +164,6 @@
             // 
             this.CBboxManager.BackColor = System.Drawing.Color.Transparent;
             this.CBboxManager.BorderColor = System.Drawing.Color.Silver;
-            this.CBboxManager.Cursor = System.Windows.Forms.Cursors.Hand;
             this.CBboxManager.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.CBboxManager.DropDownHeight = 200;
             this.CBboxManager.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -205,7 +201,6 @@
             // 
             this.CBboxDepartment.BackColor = System.Drawing.Color.Transparent;
             this.CBboxDepartment.BorderColor = System.Drawing.Color.Silver;
-            this.CBboxDepartment.Cursor = System.Windows.Forms.Cursors.Hand;
             this.CBboxDepartment.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.CBboxDepartment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CBboxDepartment.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
@@ -242,7 +237,6 @@
             this.TextboxPosition.Animated = true;
             this.TextboxPosition.BorderColor = System.Drawing.Color.Silver;
             this.TextboxPosition.BorderRadius = 2;
-            this.TextboxPosition.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.TextboxPosition.DefaultText = "";
             this.TextboxPosition.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.TextboxPosition.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
@@ -285,7 +279,6 @@
             this.TextboxEmail.Animated = true;
             this.TextboxEmail.BorderColor = System.Drawing.Color.Silver;
             this.TextboxEmail.BorderRadius = 2;
-            this.TextboxEmail.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.TextboxEmail.DefaultText = "";
             this.TextboxEmail.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.TextboxEmail.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
@@ -328,7 +321,6 @@
             this.TextboxPhone.Animated = true;
             this.TextboxPhone.BorderColor = System.Drawing.Color.Silver;
             this.TextboxPhone.BorderRadius = 2;
-            this.TextboxPhone.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.TextboxPhone.DefaultText = "";
             this.TextboxPhone.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.TextboxPhone.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
@@ -371,7 +363,6 @@
             this.TextboxName.Animated = true;
             this.TextboxName.BorderColor = System.Drawing.Color.Silver;
             this.TextboxName.BorderRadius = 2;
-            this.TextboxName.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.TextboxName.DefaultText = "";
             this.TextboxName.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.TextboxName.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
@@ -428,7 +419,6 @@
             // 
             this.EditBtn.Animated = true;
             this.EditBtn.BorderRadius = 2;
-            this.EditBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.EditBtn.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.EditBtn.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.EditBtn.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -448,7 +438,6 @@
             // 
             this.DeleteBtn.Animated = true;
             this.DeleteBtn.BorderRadius = 2;
-            this.DeleteBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.DeleteBtn.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.DeleteBtn.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.DeleteBtn.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -483,7 +472,8 @@
             this.guna2DataGridView1.AllowUserToResizeRows = false;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
             this.guna2DataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.guna2DataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.guna2DataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.guna2DataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Inter", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

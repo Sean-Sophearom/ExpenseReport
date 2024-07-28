@@ -82,16 +82,15 @@ namespace ExpenseReport.UserControls
             var cells = guna2DataGridView1.SelectedRows[0].Cells;
             editId = cells[0].Value.ToString();
 
-            var departmentOptions = db.GetCBBoxOptions("TBDepartment");
-            var managerOptions = db.GetCBBoxOptions("TBEmployee").Where(x => x.Key != int.Parse(editId)).ToList();
+            var managerOptionsWithoutSelf = db.GetCBBoxOptions("TBEmployee").Where(x => x.Key != int.Parse(editId)).ToList();
 
             TextboxName.Text = cells[1].Value.ToString();
             TextboxPhone.Text = cells[2].Value.ToString();
             TextboxEmail.Text = cells[3].Value.ToString();
             TextboxPosition.Text = cells[4].Value.ToString();
-            CBboxManager.DataSource = managerOptions;
-            CBboxDepartment.SelectedIndex = departmentOptions.FindIndex(x => x.Value == cells[5].Value.ToString());
-            CBboxManager.SelectedIndex = managerOptions.FindIndex(x => x.Value == cells[6].Value.ToString());
+            CBboxManager.DataSource = managerOptionsWithoutSelf;
+            CBboxDepartment.Text = cells[5].Value.ToString();
+            CBboxManager.Text = cells[6].Value.ToString();
 
             EditBtn.Enabled = false;
             DeleteBtn.Enabled = false;
@@ -117,7 +116,6 @@ namespace ExpenseReport.UserControls
 
         private void UpdateBtn_Click(object sender, EventArgs e)
         {
-
             var name = TextboxName.Text;
             var phone = TextboxPhone.Text;
             var email = TextboxEmail.Text;

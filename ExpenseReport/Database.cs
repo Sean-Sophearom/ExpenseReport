@@ -88,13 +88,83 @@ namespace ExpenseReport
             }
         }
 
-        public List<KeyValuePair<int, string>> GetCBBoxOptions(string table)
+        public DataTable GetTransactions(string table)
+        {
+            DataTable dt = new DataTable();
+            using (SQLiteConnection conn = new SQLiteConnection(dbPath))
+            {
+                conn.Open();
+                string query = table == "TbIncome" 
+                    ? "SELECT * FROM ViewIncomeList ORDER BY Code DESC" 
+                    : "SELECT * FROM ViewExpenseList ORDER BY Code DESC";
+
+                SQLiteDataAdapter adapter = new SQLiteDataAdapter(query, conn);
+                adapter.Fill(dt);
+                conn.Close();
+            }
+            return dt;
+        }
+
+        public bool InsertTransaction (string table, string date, string type, string amount, string currencyId, string employeeId, string description)
+        {
+            using (SQLiteConnection conn = new SQLiteConnection(dbPath))
+            {
+                conn.Open();
+                string query = $"INSERT INTO {table} (Date, Type, Amount, CurrencyId, EmployeeId, Description) VALUES (@Date, @Type, @Amount, @CurrencyId, @EmployeeId, @Description)";
+                SQLiteCommand cmd = new SQLiteCommand(query, conn);
+                cmd.Parameters.AddWithValue("@Date", date);
+                cmd.Parameters.AddWithValue("@Type", type);
+                cmd.Parameters.AddWithValue("@Amount", amount);
+                cmd.Parameters.AddWithValue("@CurrencyId", currencyId);
+                cmd.Parameters.AddWithValue("@EmployeeId", employeeId);
+                cmd.Parameters.AddWithValue("@Description", description);
+                var result = cmd.ExecuteNonQuery();
+                conn.Close();
+                return result == 1;
+            }
+        }
+
+        public bool UpdateTransaction(string table, string id, string date, string type, string amount, string currencyId, string employeeId, string description)
+        {
+            using (SQLiteConnection conn = new SQLiteConnection(dbPath))
+            {
+                conn.Open();
+                string query = $"UPDATE {table} SET Date = @Date, Type = @Type, Amount = @Amount, CurrencyId = @CurrencyId, EmployeeId = @EmployeeId, Description = @Description WHERE Code = @Id";
+                SQLiteCommand cmd = new SQLiteCommand(query, conn);
+                cmd.Parameters.AddWithValue("@Date", date);
+                cmd.Parameters.AddWithValue("@Type", type);
+                cmd.Parameters.AddWithValue("@Amount", amount);
+                cmd.Parameters.AddWithValue("@CurrencyId", currencyId);
+                cmd.Parameters.AddWithValue("@EmployeeId", employeeId);
+                cmd.Parameters.AddWithValue("@Description", description);
+                cmd.Parameters.AddWithValue("@Id", id);
+                var result = cmd.ExecuteNonQuery();
+                conn.Close();
+                return result == 1;
+            }
+        }
+
+        public bool DeleteTransaction(string table, string id)
+        {
+            using (SQLiteConnection conn = new SQLiteConnection(dbPath))
+            {
+                conn.Open();
+                string query = $"DELETE FROM {table} WHERE Code = @Id";
+                SQLiteCommand cmd = new SQLiteCommand(query, conn);
+                cmd.Parameters.AddWithValue("@Id", id);
+                var result = cmd.ExecuteNonQuery();
+                conn.Close();
+                return result == 1;
+            }
+        }
+
+        public List<KeyValuePair<int, string>> GetCBBoxOptions(string table, string filter = "")
         {
             var options = new List<KeyValuePair<int, string>>();
             using (SQLiteConnection conn = new SQLiteConnection(dbPath))
             {
                 conn.Open();
-                string query = $"SELECT Id, Name FROM {table} ORDER BY NAME ASC";
+                string query = $"SELECT Id, Name FROM {table} {filter} ORDER BY NAME ASC";
                 SQLiteCommand cmd = new SQLiteCommand(query, conn);
                 SQLiteDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
@@ -106,11 +176,10 @@ namespace ExpenseReport
             return options;
         }
 
-        public List<KeyValuePair<int, string>> GetTransactionTypes(string type)
+        public List<string> GetTransactionTypes(string type)
         {
-            var options = GetCBBoxOptions("TBTransactionType");
-            options = options.FindAll(x => x.Value.Contains(type));
-            return options;
+            var options = GetCBBoxOptions("TBTransactionType", $"where Type = '{type}'");
+            return options.ConvertAll(x => x.Value);
         }
 
         public void CreateDatabaseAndTables()
@@ -135,6 +204,9 @@ namespace ExpenseReport
                         DROP TABLE IF EXISTS TBExpense;
                         DROP TABLE IF EXISTS TBIncome;
                         DROP TABLE IF EXISTS TBTransactionType;
+                        DROP VIEW IF EXISTS ViewEmployeeList;   
+                        DROP VIEW IF EXISTS ViewIncomeList;
+                        DROP VIEW IF EXISTS ViewExpenseList;
                     ";
                     SQLiteCommand dropCmd = new SQLiteCommand(dropQuery, conn);
                     dropCmd.ExecuteNonQuery();
@@ -163,20 +235,19 @@ namespace ExpenseReport
 
                     CREATE TABLE IF NOT EXISTS TBCurrency (
                         Id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        FullName TEXT,
                         Name TEXT, 
-                        Code TEXT,
-                        Symbol TEXT,
                         Value REAL
                     );
 
                     CREATE TABLE IF NOT EXISTS TBExpense (
                         Code INTEGER PRIMARY KEY AUTOINCREMENT,
                         Date TEXT,
-                        Amount REAL,
                         Type TEXT,
-                        Description TEXT,
                         CurrencyId INTEGER,
+                        Amount REAL,
                         EmployeeId INTEGER,
+                        Description TEXT,
                         FOREIGN KEY(CurrencyId) REFERENCES TBCurrency(Id) ON DELETE CASCADE,
                         FOREIGN KEY(EmployeeId) REFERENCES TBEmployee(Id) ON DELETE CASCADE
                     );
@@ -184,11 +255,11 @@ namespace ExpenseReport
                     CREATE TABLE IF NOT EXISTS TBIncome (
                         Code INTEGER PRIMARY KEY AUTOINCREMENT,
                         Date TEXT,
-                        Amount REAL,
                         Type TEXT,
-                        Description TEXT,
                         CurrencyId INTEGER,
+                        Amount REAL,
                         EmployeeId INTEGER,
+                        Description TEXT,
                         FOREIGN KEY(CurrencyId) REFERENCES TBCurrency(Id) ON DELETE CASCADE,
                         FOREIGN KEY(EmployeeId) REFERENCES TBEmployee(Id) ON DELETE CASCADE
                     );
@@ -207,12 +278,37 @@ namespace ExpenseReport
                                EMP.Position Position,
                                DEP.Name Department,
                                COALESCE(MGR.Name, '-') Manager
-                          FROM TBEmployee EMP
+                        FROM TBEmployee EMP
                                LEFT JOIN
                                TBDepartment DEP ON EMP.DepartmentId = DEP.Id
                                LEFT JOIN
                                TBEmployee MGR ON EMP.ManagerId = MGR.Id;
+                
+                    CREATE VIEW IF NOT EXISTS ViewIncomeList AS  
+                        SELECT 
+                            INC.Code Code,
+                            INC.Date Date,
+                            INC.Type Type,
+                            CUR.Name Currency,
+                            INC.Amount Amount,
+                            COALESCE(EMP.Name,'-') Employee,
+                            INC.Description Description
+                        FROM TBIncome INC
+                        LEFT JOIN TBCurrency CUR ON INC.CurrencyId = CUR.Id
+                        LEFT JOIN TBEmployee EMP ON INC.EmployeeId = EMP.Id;
 
+                    CREATE VIEW IF NOT EXISTS ViewExpenseList AS
+                        SELECT 
+                            EXP.Code Code,
+                            EXP.Date Date,
+                            EXP.Type Type,
+                            CUR.Name Currency,
+                            EXP.Amount Amount,
+                            COALESCE(EMP.Name,'-') Employee,
+                            EXP.Description Description
+                        FROM TBExpense EXP
+                        LEFT JOIN TBCurrency CUR ON EXP.CurrencyId = CUR.Id
+                        LEFT JOIN TBEmployee EMP ON EXP.EmployeeId = EMP.Id;
                 ";
                 SQLiteCommand cmd = new SQLiteCommand(query, conn);
                 cmd.ExecuteNonQuery();
@@ -251,27 +347,29 @@ namespace ExpenseReport
                         ('Finance and Accounting', 3),
                         ('Customer Support', 2);
 
-                    INSERT INTO TBCurrency (Name, Code, Symbol, Value) VALUES 
-                        ('US Dollar', 'USD', '$', 1.0),
-                        ('Khmer Riel', 'KHR', '៛', 4100.0);
+                    INSERT INTO TBCurrency (FullName, Name, Value) VALUES 
+                        ('US Dollar', 'USD$', 1.0),
+                        ('Khmer Riel', 'KHR៛', 4100.0);
 
                     INSERT INTO TBTransactionType (Name, Type) VALUES 
                         ('Software Sales', 'Income'),
                         ('Consulting Services', 'Income'),
                         ('Subscription Fees', 'Income'),
-                        ('Maintenance and Support Contracts', 'Income'),
-                        ('Custom Software Development', 'Income'),
+                        ('Maintenance and Support', 'Income'),
+                        ('Custom Software', 'Income'),
                         ('Training Services', 'Income'),
-                        ('Reselling Hardware and Software', 'Income'),
+                        ('Reselling Hardware', 'Income'),
                         ('Advertising Revenue', 'Income'),
                         ('Affiliate Marketing', 'Income'),
                         ('Managed IT Services', 'Income'),
+                        ('Other', 'Income'),
+                        ('Other', 'Expense'),
                         ('Salaries and Wages', 'Expense'),
                         ('Rent and Utilities', 'Expense'),
-                        ('Software Licenses and Subscriptions', 'Expense'),
-                        ('Hardware and Equipment Purchases', 'Expense'),
-                        ('Internet and Telecommunications', 'Expense'),
-                        ('Training and Professional Development', 'Expense'),
+                        ('Software Licenses', 'Expense'),
+                        ('Hardware and Equipment', 'Expense'),
+                        ('Internet Fees', 'Expense'),
+                        ('Training and Development', 'Expense'),
                         ('Marketing and Advertising', 'Expense'),
                         ('Office Supplies', 'Expense'),
                         ('Travel and Accommodation', 'Expense'),
@@ -298,6 +396,42 @@ namespace ExpenseReport
                         ('Eve Adams', '555-2345', 'eve.adams@example.com', 'HR Specialist', 3, 6),
                         ('Charlie Brown', '555-8765', 'charlie.brown@example.com', 'QA Engineer', 2, 7),
                         ('Alice Johnson', '555-1234', 'alice.johnson@example.com', 'Developer', 1, 1);
+
+                    INSERT INTO TBIncome (Date, Type, Amount, CurrencyId, EmployeeId, Description) VALUES
+                        ('2024-01-15', 'Software Sales', 1500.00, 1, 1, 'Monthly sales revenue'),
+                        ('2024-02-20', 'Consulting Services', 2200.00, 1, 2, 'Consulting fees for project X'),
+                        ('2024-03-25', 'Subscription Fees', 2800.00, 1, 3, 'Annual subscription fee'),
+                        ('2024-04-10', 'Maintenance and Support', 1300.00, 1, 4, 'Support contract renewal'),
+                        ('2024-05-18', 'Custom Software', 3000.00, 1, 5, 'Custom software development for client Y'),
+                        ('2024-06-05', 'Training Services', 1800.00, 1, 6, 'Employee training services'),
+                        ('2024-07-12', 'Reselling Hardware', 2500.00, 1, 7, 'Revenue from reselling hardware'),
+                        ('2024-01-22', 'Advertising Revenue', 2000.00, 1, 8, 'Online advertising revenue'),
+                        ('2024-02-14', 'Affiliate Marketing', 2700.00, 1, 9, 'Revenue from affiliate marketing'),
+                        ('2024-03-29', 'Managed IT Services', 1900.00, 1, 10, 'Managed IT services for client Z'),
+                        ('2024-04-16', 'Software Sales', 5000000.00, 2, 11, 'Large software sales contract'),
+                        ('2024-05-23', 'Consulting Services', 6000000.00, 2, 12, 'Consulting services for major client'),
+                        ('2024-06-30', 'Subscription Fees', 7000000.00, 2, 13, 'Corporate subscription fee'),
+                        ('2024-07-04', 'Maintenance and Support', 8000000.00, 2, 14, 'Multi-year support contract'),
+                        ('2024-01-09', 'Custom Software', 9000000.00, 2, 15, 'Custom software for government project'),
+                        ('2024-02-26', 'Training Services', 10000000.00, 2, 16, 'Large scale training services');
+
+                    INSERT INTO TBExpense (Date, Type, Amount, CurrencyId, EmployeeId, Description) VALUES
+                        ('2024-01-03', 'Salaries and Wages', 2500.00, 1, 1, 'Monthly salary payment'),
+                        ('2024-02-11', 'Rent and Utilities', 1800.00, 1, 2, 'Office rent and utilities'),
+                        ('2024-03-08', 'Software Licenses', 2300.00, 1, 3, 'Software subscription fee'),
+                        ('2024-04-05', 'Hardware and Equipment', 2900.00, 1, 4, 'New hardware purchase'),
+                        ('2024-05-17', 'Internet Fees', 1200.00, 1, 5, 'Monthly internet and phone bill'),
+                        ('2024-06-13', 'Training and Development', 1700.00, 1, 6, 'Employee training program'),
+                        ('2024-07-21', 'Marketing and Advertising', 2600.00, 1, 7, 'Marketing campaign expenses'),
+                        ('2024-01-07', 'Office Supplies', 900.00, 1, 8, 'Office supplies purchase'),
+                        ('2024-02-19', 'Travel and Accommodation', 3000.00, 1, 9, 'Business travel expenses'),
+                        ('2024-03-24', 'Insurance', 1500.00, 1, 10, 'Company insurance premium'),
+                        ('2024-04-01', 'Salaries and Wages', 8000000.00, 2, 11, 'Quarterly salary payment'),
+                        ('2024-05-11', 'Rent and Utilities', 9000000.00, 2, 12, 'Annual office rent and utilities'),
+                        ('2024-06-18', 'Software Licenses', 10000000.00, 2, 13, 'Corporate software license fee'),
+                        ('2024-07-14', 'Hardware and Equipment', 11000000.00, 2, 14, 'Bulk hardware purchase'),
+                        ('2024-01-26', 'Internet Fees', 12000000.00, 2, 15, 'Yearly internet and phone bill'),
+                        ('2024-02-08', 'Training and Development', 7000000.00, 2, 16, 'Professional development program');
                 ";
                 var cmd = new SQLiteCommand(selectQuery, conn);
                 var count = Convert.ToInt32(cmd.ExecuteScalar());

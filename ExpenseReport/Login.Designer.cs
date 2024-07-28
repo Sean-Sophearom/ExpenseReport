@@ -100,7 +100,6 @@
             // 
             this.guna2TextBox1.Animated = true;
             this.guna2TextBox1.BorderRadius = 6;
-            this.guna2TextBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.guna2TextBox1.DefaultText = "";
             this.guna2TextBox1.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.guna2TextBox1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
@@ -124,7 +123,6 @@
             // 
             this.guna2TextBox2.Animated = true;
             this.guna2TextBox2.BorderRadius = 6;
-            this.guna2TextBox2.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.guna2TextBox2.DefaultText = "";
             this.guna2TextBox2.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.guna2TextBox2.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
@@ -148,7 +146,6 @@
             // 
             this.guna2Button1.Animated = true;
             this.guna2Button1.BorderRadius = 6;
-            this.guna2Button1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
