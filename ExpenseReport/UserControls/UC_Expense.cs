@@ -36,7 +36,7 @@ namespace ExpenseReport.UserControls
 
         private void PopulateDataGrid()
         {
-            guna2DataGridView1.DataSource = db.GetTransactions("TbExpense");
+            guna2DataGridView1.DataSource = db.GetTransactions("TBExpense");
         }
 
         private void PopulateComboBox()

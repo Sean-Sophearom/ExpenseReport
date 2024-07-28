@@ -94,7 +94,7 @@ namespace ExpenseReport
             using (SQLiteConnection conn = new SQLiteConnection(dbPath))
             {
                 conn.Open();
-                string query = table == "TbIncome" 
+                string query = table == "TBIncome" 
                     ? "SELECT * FROM ViewIncomeList ORDER BY Code DESC" 
                     : "SELECT * FROM ViewExpenseList ORDER BY Code DESC";
 
