@@ -80,7 +80,7 @@ namespace ExpenseReport.UserControls
 
             if (string.IsNullOrEmpty(date) || string.IsNullOrEmpty(type) || string.IsNullOrEmpty(amount) || string.IsNullOrEmpty(currency))
             {
-                MessageBox.Show("Please fill all fields");
+                MessageBox.Show("Please fill all fields", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -88,8 +88,8 @@ namespace ExpenseReport.UserControls
             PopulateDataGrid();
             ResetInputFields();
 
-            if (result) MessageBox.Show("Expense record inserted successfully");
-            else MessageBox.Show("An error occurred while inserting the record! Please try again.");
+            if (result) MessageBox.Show("Expense record inserted successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            else MessageBox.Show("An error occurred while inserting the record! Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
         }
 
@@ -122,8 +122,8 @@ namespace ExpenseReport.UserControls
             {
                 bool success = db.DeleteTransaction("TBExpense", code);
                 PopulateDataGrid();
-                if (success) MessageBox.Show("Expense record deleted successfully");
-                else MessageBox.Show("An error occurred while deleting the record! Please try again.");
+                if (success) MessageBox.Show("Expense record deleted successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                else MessageBox.Show("An error occurred while deleting the record! Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -138,7 +138,7 @@ namespace ExpenseReport.UserControls
 
             if (string.IsNullOrEmpty(date) || string.IsNullOrEmpty(type) || string.IsNullOrEmpty(amount) || string.IsNullOrEmpty(currency))
             {
-                MessageBox.Show("Please fill all fields");
+                MessageBox.Show("Please fill all fields", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -147,8 +147,8 @@ namespace ExpenseReport.UserControls
             PopulateDataGrid();
             ResetInputFields();
 
-            if (result) MessageBox.Show("Expense record updated successfully");
-            else MessageBox.Show("An error occurred while updating the record! Please try again.");
+            if (result) MessageBox.Show("Expense record updated successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            else MessageBox.Show("An error occurred while updating the record! Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
             EditBtn.Enabled = true;
             DeleteBtn.Enabled = true;
@@ -179,7 +179,7 @@ namespace ExpenseReport.UserControls
             if (!valid)
             {
                 TextboxAmount.Text = text.Length <= 1 ? "" : text.Substring(0, text.Length - 1);
-                MessageBox.Show("Please enter a valid amount");
+                MessageBox.Show("Please enter a valid amount", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
         }

@@ -13,7 +13,7 @@ namespace ExpenseReport
     {
         private const string dbName = "expenseReport.db";
         private const string dbPath = "Data Source=" + dbName;
-        private const bool dropDb = true;
+        private const bool dropDb = Program.dropDb;
 
         // Singleton pattern
         private static readonly Database instance = new Database();

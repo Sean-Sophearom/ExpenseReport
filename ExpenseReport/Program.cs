@@ -8,7 +8,8 @@ namespace ExpenseReport
 {
     internal static class Program
     {
-        public const bool isDevMode = true;
+        public const bool isDevMode = false;
+        public const bool dropDb = false;
         private static readonly Database db = Database.Instance;
         /// <summary>
         /// The main entry point for the application.

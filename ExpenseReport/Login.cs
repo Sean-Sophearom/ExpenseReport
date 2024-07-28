@@ -45,11 +45,11 @@ namespace ExpenseReport
             }
             else if (string.IsNullOrWhiteSpace(userId) || string.IsNullOrWhiteSpace(password))
             {
-                MessageBox.Show("Please enter your credentials");
+                MessageBox.Show("Please enter your credentials", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
-                MessageBox.Show("Invalid credentials");
+                MessageBox.Show("Invalid credentials", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
