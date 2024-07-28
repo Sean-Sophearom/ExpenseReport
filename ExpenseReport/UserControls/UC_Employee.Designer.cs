@@ -28,9 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_Employee));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.CancelBtn = new Guna.UI2.WinForms.Guna2Button();
             this.InsertBtn = new Guna.UI2.WinForms.Guna2Button();
@@ -102,6 +103,8 @@
             this.CancelBtn.FillColor = System.Drawing.Color.Red;
             this.CancelBtn.Font = new System.Drawing.Font("Inter Medium", 9.75F, System.Drawing.FontStyle.Bold);
             this.CancelBtn.ForeColor = System.Drawing.Color.White;
+            this.CancelBtn.Image = ((System.Drawing.Image)(resources.GetObject("CancelBtn.Image")));
+            this.CancelBtn.ImageSize = new System.Drawing.Size(16, 16);
             this.CancelBtn.IndicateFocus = true;
             this.CancelBtn.Location = new System.Drawing.Point(189, 365);
             this.CancelBtn.Margin = new System.Windows.Forms.Padding(2);
@@ -122,6 +125,9 @@
             this.InsertBtn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.InsertBtn.Font = new System.Drawing.Font("Inter Medium", 9.75F, System.Drawing.FontStyle.Bold);
             this.InsertBtn.ForeColor = System.Drawing.Color.White;
+            this.InsertBtn.Image = ((System.Drawing.Image)(resources.GetObject("InsertBtn.Image")));
+            this.InsertBtn.ImageOffset = new System.Drawing.Point(-1, 0);
+            this.InsertBtn.ImageSize = new System.Drawing.Size(16, 16);
             this.InsertBtn.IndicateFocus = true;
             this.InsertBtn.Location = new System.Drawing.Point(118, 365);
             this.InsertBtn.Margin = new System.Windows.Forms.Padding(2);
@@ -141,6 +147,8 @@
             this.UpdateBtn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.UpdateBtn.Font = new System.Drawing.Font("Inter Medium", 9.75F, System.Drawing.FontStyle.Bold);
             this.UpdateBtn.ForeColor = System.Drawing.Color.White;
+            this.UpdateBtn.Image = ((System.Drawing.Image)(resources.GetObject("UpdateBtn.Image")));
+            this.UpdateBtn.ImageSize = new System.Drawing.Size(16, 16);
             this.UpdateBtn.IndicateFocus = true;
             this.UpdateBtn.Location = new System.Drawing.Point(63, 365);
             this.UpdateBtn.Margin = new System.Windows.Forms.Padding(2);
@@ -237,6 +245,7 @@
             this.TextboxPosition.Animated = true;
             this.TextboxPosition.BorderColor = System.Drawing.Color.Silver;
             this.TextboxPosition.BorderRadius = 2;
+            this.TextboxPosition.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.TextboxPosition.DefaultText = "";
             this.TextboxPosition.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.TextboxPosition.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
@@ -279,6 +288,7 @@
             this.TextboxEmail.Animated = true;
             this.TextboxEmail.BorderColor = System.Drawing.Color.Silver;
             this.TextboxEmail.BorderRadius = 2;
+            this.TextboxEmail.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.TextboxEmail.DefaultText = "";
             this.TextboxEmail.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.TextboxEmail.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
@@ -321,6 +331,7 @@
             this.TextboxPhone.Animated = true;
             this.TextboxPhone.BorderColor = System.Drawing.Color.Silver;
             this.TextboxPhone.BorderRadius = 2;
+            this.TextboxPhone.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.TextboxPhone.DefaultText = "";
             this.TextboxPhone.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.TextboxPhone.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
@@ -363,6 +374,7 @@
             this.TextboxName.Animated = true;
             this.TextboxName.BorderColor = System.Drawing.Color.Silver;
             this.TextboxName.BorderRadius = 2;
+            this.TextboxName.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.TextboxName.DefaultText = "";
             this.TextboxName.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.TextboxName.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
@@ -425,6 +437,9 @@
             this.EditBtn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.EditBtn.Font = new System.Drawing.Font("Inter", 8.25F, System.Drawing.FontStyle.Bold);
             this.EditBtn.ForeColor = System.Drawing.Color.White;
+            this.EditBtn.Image = ((System.Drawing.Image)(resources.GetObject("EditBtn.Image")));
+            this.EditBtn.ImageOffset = new System.Drawing.Point(-1, 0);
+            this.EditBtn.ImageSize = new System.Drawing.Size(16, 16);
             this.EditBtn.IndicateFocus = true;
             this.EditBtn.Location = new System.Drawing.Point(403, 30);
             this.EditBtn.Margin = new System.Windows.Forms.Padding(2);
@@ -445,6 +460,8 @@
             this.DeleteBtn.FillColor = System.Drawing.Color.Red;
             this.DeleteBtn.Font = new System.Drawing.Font("Inter", 8.25F, System.Drawing.FontStyle.Bold);
             this.DeleteBtn.ForeColor = System.Drawing.Color.White;
+            this.DeleteBtn.Image = ((System.Drawing.Image)(resources.GetObject("DeleteBtn.Image")));
+            this.DeleteBtn.ImageSize = new System.Drawing.Size(16, 16);
             this.DeleteBtn.IndicateFocus = true;
             this.DeleteBtn.Location = new System.Drawing.Point(492, 30);
             this.DeleteBtn.Margin = new System.Windows.Forms.Padding(2);
@@ -470,28 +487,28 @@
             this.guna2DataGridView1.AllowUserToDeleteRows = false;
             this.guna2DataGridView1.AllowUserToResizeColumns = false;
             this.guna2DataGridView1.AllowUserToResizeRows = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            this.guna2DataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.guna2DataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.guna2DataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.guna2DataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Inter", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.guna2DataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Inter", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.guna2DataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.guna2DataGridView1.ColumnHeadersHeight = 16;
             this.guna2DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Inter", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.guna2DataGridView1.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Inter", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.guna2DataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             this.guna2DataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.guna2DataGridView1.Location = new System.Drawing.Point(28, 74);
             this.guna2DataGridView1.Name = "guna2DataGridView1";

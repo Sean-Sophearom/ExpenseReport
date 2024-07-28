@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_Income));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -102,6 +103,9 @@
             this.CancelBtn.FillColor = System.Drawing.Color.Red;
             this.CancelBtn.Font = new System.Drawing.Font("Inter Medium", 9.75F, System.Drawing.FontStyle.Bold);
             this.CancelBtn.ForeColor = System.Drawing.Color.White;
+            this.CancelBtn.Image = ((System.Drawing.Image)(resources.GetObject("CancelBtn.Image")));
+            this.CancelBtn.ImageOffset = new System.Drawing.Point(-1, 0);
+            this.CancelBtn.ImageSize = new System.Drawing.Size(16, 16);
             this.CancelBtn.IndicateFocus = true;
             this.CancelBtn.Location = new System.Drawing.Point(189, 365);
             this.CancelBtn.Margin = new System.Windows.Forms.Padding(2);
@@ -122,6 +126,9 @@
             this.InsertBtn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.InsertBtn.Font = new System.Drawing.Font("Inter Medium", 9.75F, System.Drawing.FontStyle.Bold);
             this.InsertBtn.ForeColor = System.Drawing.Color.White;
+            this.InsertBtn.Image = ((System.Drawing.Image)(resources.GetObject("InsertBtn.Image")));
+            this.InsertBtn.ImageOffset = new System.Drawing.Point(-1, 0);
+            this.InsertBtn.ImageSize = new System.Drawing.Size(16, 16);
             this.InsertBtn.IndicateFocus = true;
             this.InsertBtn.Location = new System.Drawing.Point(118, 365);
             this.InsertBtn.Margin = new System.Windows.Forms.Padding(2);
@@ -141,6 +148,9 @@
             this.UpdateBtn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.UpdateBtn.Font = new System.Drawing.Font("Inter Medium", 9.75F, System.Drawing.FontStyle.Bold);
             this.UpdateBtn.ForeColor = System.Drawing.Color.White;
+            this.UpdateBtn.Image = ((System.Drawing.Image)(resources.GetObject("UpdateBtn.Image")));
+            this.UpdateBtn.ImageOffset = new System.Drawing.Point(-1, 0);
+            this.UpdateBtn.ImageSize = new System.Drawing.Size(16, 16);
             this.UpdateBtn.IndicateFocus = true;
             this.UpdateBtn.Location = new System.Drawing.Point(63, 365);
             this.UpdateBtn.Margin = new System.Windows.Forms.Padding(2);
@@ -393,7 +403,7 @@
             this.ActionHeader.Font = new System.Drawing.Font("Inter", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ActionHeader.Location = new System.Drawing.Point(50, 30);
             this.ActionHeader.Name = "ActionHeader";
-            this.ActionHeader.Size = new System.Drawing.Size(264, 23);
+            this.ActionHeader.Size = new System.Drawing.Size(252, 23);
             this.ActionHeader.TabIndex = 0;
             this.ActionHeader.Text = "Insert New Income Record";
             // 
@@ -421,6 +431,9 @@
             this.EditBtn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.EditBtn.Font = new System.Drawing.Font("Inter", 8.25F, System.Drawing.FontStyle.Bold);
             this.EditBtn.ForeColor = System.Drawing.Color.White;
+            this.EditBtn.Image = ((System.Drawing.Image)(resources.GetObject("EditBtn.Image")));
+            this.EditBtn.ImageOffset = new System.Drawing.Point(-1, 0);
+            this.EditBtn.ImageSize = new System.Drawing.Size(16, 16);
             this.EditBtn.IndicateFocus = true;
             this.EditBtn.Location = new System.Drawing.Point(403, 30);
             this.EditBtn.Margin = new System.Windows.Forms.Padding(2);
@@ -441,6 +454,8 @@
             this.DeleteBtn.FillColor = System.Drawing.Color.Red;
             this.DeleteBtn.Font = new System.Drawing.Font("Inter", 8.25F, System.Drawing.FontStyle.Bold);
             this.DeleteBtn.ForeColor = System.Drawing.Color.White;
+            this.DeleteBtn.Image = ((System.Drawing.Image)(resources.GetObject("DeleteBtn.Image")));
+            this.DeleteBtn.ImageSize = new System.Drawing.Size(16, 16);
             this.DeleteBtn.IndicateFocus = true;
             this.DeleteBtn.Location = new System.Drawing.Point(492, 30);
             this.DeleteBtn.Margin = new System.Windows.Forms.Padding(2);
@@ -456,7 +471,7 @@
             this.label1.Font = new System.Drawing.Font("Inter", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(24, 30);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(171, 23);
+            this.label1.Size = new System.Drawing.Size(159, 23);
             this.label1.TabIndex = 7;
             this.label1.Text = "Income Records";
             // 
