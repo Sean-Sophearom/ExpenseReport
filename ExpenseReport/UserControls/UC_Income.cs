@@ -183,5 +183,10 @@ namespace ExpenseReport.UserControls
             }
 
         }
+
+        private void ExportBtn_Click(object sender, EventArgs e)
+        {
+            db.ExportToExcel(db.GetTransactions("TBIncome"), "Income");
+        }
     }
 }

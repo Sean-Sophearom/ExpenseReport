@@ -74,7 +74,6 @@ namespace ExpenseReport.UserControls
 
             if (result) MessageBox.Show("Employee record inserted successfully");
             else MessageBox.Show("An error occurred while inserting the record! Please try again.");
-
         }
 
         private void EditBtn_Click(object sender, EventArgs e)
@@ -156,6 +155,11 @@ namespace ExpenseReport.UserControls
             CancelBtn.Visible = false;
             InsertBtn.Visible = true;
             ActionHeader.Text = "Insert New Employee";
+        }
+
+        private void ExportBtn_Click(object sender, EventArgs e)
+        {
+            db.ExportToExcel(db.GetEmployees(), "Employees");
         }
     }
 }

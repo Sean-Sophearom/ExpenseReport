@@ -4,6 +4,8 @@ using System.Data.SQLite;
 using System.IO;
 using System.Diagnostics;
 using System.Data;
+using System.Windows.Forms;
+using OfficeOpenXml;
 
 namespace ExpenseReport
 {
@@ -20,7 +22,39 @@ namespace ExpenseReport
         {
         }
 
-        //Get Employees
+        public void ExportToExcel(DataTable dt, string sheetName = "Sheet1", string fileName = "")
+
+        {
+            if (string.IsNullOrEmpty(fileName))
+            {
+                fileName = sheetName;
+            }
+            using (SaveFileDialog sfd = new SaveFileDialog())
+            {
+                sfd.Filter = "Excel Files|*.xlsx";
+                sfd.FileName = fileName;
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    string filePath = sfd.FileName;
+
+                    using (ExcelPackage pck = new ExcelPackage())
+                    {
+                        ExcelWorksheet ws = pck.Workbook.Worksheets.Add(sheetName);
+                        ws.Cells["A1"].LoadFromDataTable(dt, true);
+                        pck.SaveAs(new FileInfo(filePath));
+                        try
+                        {
+                            Process.Start(filePath);
+                        }
+                        catch (Exception)
+                        {
+                            MessageBox.Show("Data exported successfully", "Export To Excel", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+                }
+            }
+        }
+
         public DataTable GetEmployees()
         {
             DataTable dt = new DataTable();
@@ -94,8 +128,8 @@ namespace ExpenseReport
             using (SQLiteConnection conn = new SQLiteConnection(dbPath))
             {
                 conn.Open();
-                string query = table == "TBIncome" 
-                    ? "SELECT * FROM ViewIncomeList ORDER BY Code DESC" 
+                string query = table == "TBIncome"
+                    ? "SELECT * FROM ViewIncomeList ORDER BY Code DESC"
                     : "SELECT * FROM ViewExpenseList ORDER BY Code DESC";
 
                 SQLiteDataAdapter adapter = new SQLiteDataAdapter(query, conn);
@@ -105,7 +139,7 @@ namespace ExpenseReport
             return dt;
         }
 
-        public bool InsertTransaction (string table, string date, string type, string amount, string currencyId, string employeeId, string description)
+        public bool InsertTransaction(string table, string date, string type, string amount, string currencyId, string employeeId, string description)
         {
             using (SQLiteConnection conn = new SQLiteConnection(dbPath))
             {
@@ -193,8 +227,6 @@ namespace ExpenseReport
             using (SQLiteConnection conn = new SQLiteConnection(dbPath))
             {
                 conn.Open();
-
-                // Drop database tables
                 if (dropDb)
                 {
                     var dropQuery = @"
